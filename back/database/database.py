@@ -2,6 +2,7 @@ from .db_exceptions import MonthNumberException
 from datetime import datetime
 import json
 import os
+from ..schemas.complaints import ComplaintSchema
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -81,11 +82,25 @@ class Database:
     def insert_complaint(self):
         pass
 
-    def get_complaints(self):
+    def _filter_complaints(self,filter_data:ComplaintSchema,el:ComplaintSchema):
+        for key, value in filter_data.items():
+            if(el[key] != value):
+                return False
+        return True
+    
+
+    def get_complaints(self,filter_data:ComplaintSchema = None,limit: int = None ,offset: int = None):
         complaints_with_user_data = []
+        complaints_data = self.complaints
         users = { user['id']: user for user in self.users }
+
+        if(limit and offset):
+            complaints_data = self.complaints[offset:(offset+limit)]
         
-        for complaint in self.complaints:
+        if(filter_data):
+            complaints_data = list(filter(lambda seq: self._filter_complaints(filter_data,seq),complaints_data))
+
+        for complaint in complaints_data:
             user_id = complaint['user_id']
             user = users[user_id]
 

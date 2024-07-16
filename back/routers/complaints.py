@@ -7,8 +7,17 @@ from http import HTTPStatus
 router = APIRouter(prefix='/complaints', tags=['complaints'])
 
 @router.get('/', response_model=ComplaintUserList)
-def get_complaints():
-    complaints = client.get_complaints()
+def get_complaints(limit:int = 10,page:int = 1):
+    offset = (page-1)*limit
+    complaints = client.get_complaints({},limit,offset)
+    complaints.sort(key=lambda x: x['id'])
+    return {'complaints': complaints}
+
+@router.get('/user/{user_id}', response_model=ComplaintUserList)
+def get_complaints(user_id:str,limit:int = None,page:int = 1):
+    offset = None if limit is None else (page-1)*limit
+
+    complaints = client.get_complaints({'user_id':user_id},limit, offset)
     complaints.sort(key=lambda x: x['id'])
     return {'complaints': complaints}
 
