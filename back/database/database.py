@@ -1,8 +1,9 @@
 from .db_exceptions import MonthNumberException
 from datetime import datetime
 import json
+import copy
 import os
-from ..schemas.complaints import ComplaintSchema
+from ..schemas.complaints import ComplaintSchema,ComplaintFilter
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -82,21 +83,34 @@ class Database:
     def insert_complaint(self):
         pass
 
-    def _filter_complaints(self,filter_data:ComplaintSchema,el:ComplaintSchema):
+    def _filter_complaints(self,filter_data:ComplaintFilter,el:ComplaintSchema):
+        filter_data = copy.copy(filter_data)
+
+        if filter_data['from_date'] and filter_data["to_date"] and "date" in el:
+            date = datetime.strptime(el["date"],"%Y-%m-%dT%H:%M:%S")
+            if date < filter_data['from_date'] or date > filter_data["to_date"]:
+                return False                
+            del filter_data['from_date']
+            del filter_data["to_date"]
+
+        if filter_data['query_string']:
+            if filter_data['query_string'] not in el["description"] and filter_data['query_string']:
+                return False
+            del filter_data["query_string"]
+
         for key, value in filter_data.items():
-            if(el[key] != value):
+            if(value and el[key] != value):
                 return False
         return True
     
 
-    def get_complaints(self,filter_data:ComplaintSchema = None,limit: int = None ,offset: int = None):
+    def get_complaints(self,filter_data:ComplaintFilter = None,limit: int = None ,offset: int = None):
         complaints_with_user_data = []
         complaints_data = self.complaints
         users = { user['id']: user for user in self.users }
-
         if(limit and offset):
             complaints_data = self.complaints[offset:(offset+limit)]
-        
+
         if(filter_data):
             complaints_data = list(filter(lambda seq: self._filter_complaints(filter_data,seq),complaints_data))
 

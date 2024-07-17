@@ -3,23 +3,17 @@ from back.schemas.group_bys import *
 from fastapi import APIRouter, HTTPException
 from back.database.database import client
 from http import HTTPStatus
+from datetime import datetime
 
 router = APIRouter(prefix='/complaints', tags=['complaints'])
 
 @router.get('/', response_model=ComplaintUserList)
-def get_complaints(limit:int = 10,page:int = 1):
-    offset = (page-1)*limit
-    complaints = client.get_complaints({},limit,offset)
+def get_complaints(from_date: datetime = None,to_date:datetime=None,query_string:str=None,limit:int = 10,page:int = 1):
+    offset = (page-1)*limit + 1
+    complaints = client.get_complaints({'from_date':from_date,'to_date':to_date,"query_string":query_string},limit,offset)
     complaints.sort(key=lambda x: x['id'])
     return {'complaints': complaints}
 
-@router.get('/user/{user_id}', response_model=ComplaintUserList)
-def get_complaints(user_id:str,limit:int = None,page:int = 1):
-    offset = None if limit is None else (page-1)*limit
-
-    complaints = client.get_complaints({'user_id':user_id},limit, offset)
-    complaints.sort(key=lambda x: x['id'])
-    return {'complaints': complaints}
 
 @router.get('/{complaint_id}', response_model=ComplaintSchema)
 def get_complaint(complaint_id: str):
@@ -30,9 +24,14 @@ def get_complaint(complaint_id: str):
 
     return complaint
 
-# @router.get('/user/{user_id}', response_model=ComplaintList)
-# def get_complaints_from_user(user_id: str):
-#     # Implement your function here!
+@router.get('/user/{user_id}', response_model=ComplaintUserList)
+def get_complaints(user_id:str,limit:int = None,page:int = 1):
+    offset = None if limit is None else (page-1)*limit
+
+    complaints = client.get_complaints({'user_id':user_id},limit, offset)
+    complaints.sort(key=lambda x: x['id'])
+    return {'complaints': complaints}
+
 
 @router.get('/group/types', response_model=GroupByTypes)
 def get_complaints_group_by_types():

@@ -16,6 +16,16 @@ class ComplaintSchema(BaseModel):
 class ComplaintList(BaseModel):
     complaints: list[ComplaintSchema]
 
+
+class ComplaintFilter(BaseModel):
+    user_id: str
+    from_date: datetime
+    to_date: datetime
+    query_string: str
+    situation: str
+    neighborhood: str
+    type:str
+
 class ComplaintUserSchema(BaseModel):
     id: str
     user_id: str
