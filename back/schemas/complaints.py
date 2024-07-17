@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from .users import UserSchema
 
 class ComplaintSchema(BaseModel):
     id: str
@@ -12,6 +13,7 @@ class ComplaintSchema(BaseModel):
     description: str
     created_at: datetime
     updated_at: datetime
+    user: UserSchema | None
 
 class ComplaintList(BaseModel):
     complaints: list[ComplaintSchema]
