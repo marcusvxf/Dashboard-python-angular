@@ -9,6 +9,41 @@
   --nina-primary-extra-light-color: #f1ecff;
 }
 
+@font-face {
+  font-family: Poppins;
+  src: url(assets/fonts/Poppins-Black.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 700;
+  src: url(assets/fonts/Poppins-Bold.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 600;
+  src: url(assets/fonts/Poppins-SemiBold.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 500;
+  src: url(assets/fonts/Poppins-Medium.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  src: url(assets/fonts/Poppins-Regular.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 300;
+  src: url(assets/fonts/Poppins-Light.ttf) format('opentype');
+}
+
 @layer base {
   h1 {
     @apply font-poppins font-bold text-[3rem] leading-[4rem];
