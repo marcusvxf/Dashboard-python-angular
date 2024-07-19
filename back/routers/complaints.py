@@ -1,4 +1,4 @@
-from back.schemas.complaints import ComplaintSchema, ComplaintList, ComplaintUserSchema, ComplaintUserList
+from back.schemas.complaints import ComplaintSchema,CompalintListReturn, ComplaintList, ComplaintUserSchema, ComplaintUserList
 from back.schemas.group_bys import *
 from fastapi import APIRouter, HTTPException
 from back.database.database import client
@@ -7,12 +7,12 @@ from datetime import datetime
 
 router = APIRouter(prefix='/complaints', tags=['complaints'])
 
-@router.get('/', response_model=ComplaintUserList)
+@router.get('/', response_model=CompalintListReturn)
 def get_complaints(from_date: datetime = None,to_date:datetime=None,query_string:str=None,limit:int = 10,page:int = 1):
     offset = (page-1)*limit + 1
     complaints = client.get_complaints({'from_date':from_date,'to_date':to_date,"query_string":query_string},limit,offset)
-    complaints.sort(key=lambda x: x['id'])
-    return {'complaints': complaints}
+    # complaints.sort(key=lambda x: x['id'])
+    return {'complaints':complaints['complaints'],'size':complaints['size'],'total_pages':complaints['max_pages']}
 
 
 @router.get('/{complaint_id}', response_model=ComplaintSchema)
@@ -24,13 +24,13 @@ def get_complaint(complaint_id: str):
 
     return complaint
 
-@router.get('/user/{user_id}', response_model=ComplaintUserList)
+@router.get('/user/{user_id}', response_model=CompalintListReturn)
 def get_complaints(user_id:str,limit:int = None,page:int = 1):
     offset = None if limit is None else (page-1)*limit
 
     complaints = client.get_complaints({'user_id':user_id},limit, offset)
-    complaints.sort(key=lambda x: x['id'])
-    return {'complaints': complaints}
+    # complaints.sort(key=lambda x: x['id'])
+    return complaints
 
 
 @router.get('/group/types', response_model=GroupByTypes)

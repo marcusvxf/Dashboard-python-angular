@@ -50,3 +50,9 @@ class ComplaintUserSchema(BaseModel):
 
 class ComplaintUserList(BaseModel):
     complaints: list[ComplaintUserSchema]
+
+
+class CompalintListReturn(BaseModel):
+    complaints: list[ComplaintUserSchema]
+    max_pages:int
+    size: int

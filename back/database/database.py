@@ -108,11 +108,16 @@ class Database:
         complaints_with_user_data = []
         complaints_data = self.complaints
         users = { user['id']: user for user in self.users }
-        if(limit and offset):
-            complaints_data = self.complaints[offset:(offset+limit)]
+        size = 0
+
 
         if(filter_data):
             complaints_data = list(filter(lambda seq: self._filter_complaints(filter_data,seq),complaints_data))
+
+        size = len(complaints_data)  
+        print(size)      
+        if(limit and offset):
+            complaints_data = self.complaints[offset:(offset+limit)]
 
         for complaint in complaints_data:
             user_id = complaint['user_id']
@@ -122,8 +127,13 @@ class Database:
                 complaint[f'user_{key}'] = value
 
             complaints_with_user_data.append(complaint)
-
-        return complaints_with_user_data
+        complaints_return = {};
+        complaints_return['size'] = size
+        complaints_return['complaints'] = complaints_with_user_data
+        complaints_return['max_pages'] = size/limit
+  
+        
+        return complaints_return
 
     def get_complaint(self, _id: str = None):
         """ Search a complaint by id and return the data. """
