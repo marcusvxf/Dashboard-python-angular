@@ -39,7 +39,8 @@ describe('TableRowComponent', () => {
   });
 
   it('should show correct info', () => {
-    const row_component = fixture.nativeElement.querySelectorAll('#column');
+    const row_component: HTMLElement[] =
+      fixture.nativeElement.querySelectorAll('#column');
     let index = 0;
     for (const [key, value] of Object.entries(correct_data)) {
       expect(row_component[index].textContent).toContain(value);

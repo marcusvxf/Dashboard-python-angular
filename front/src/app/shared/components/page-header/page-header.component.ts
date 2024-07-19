@@ -5,8 +5,5 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './page-header.component.html',
-  styleUrl: './page-header.component.scss'
 })
-export class PageHeaderComponent {
-
-}
+export class PageHeaderComponent {}
