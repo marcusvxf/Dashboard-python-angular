@@ -1,0 +1,34 @@
+<div class="flex text-center items-center float-end">
+  <button
+    [disabled]="page == 1"
+    id="decrease-button"
+    class="h-8"
+    (click)="setPage.emit(page - 1)"
+  >
+    <i class="text-[2rem] text-nina_primary_color material-icons-round"
+      >arrow_back_ios</i
+    >
+  </button>
+  <div class="pagination-sequence">
+    @for (item of pagination_itens; track $index) {
+      <span
+        (click)="item != '...' ? set_page_click(item) : false"
+        class="legend1"
+        [ngClass]="{
+          'bg-nina_primary_color !text-white_default': is_actual_page(item),
+        }"
+        >{{ item }}</span
+      >
+    }
+  </div>
+  <button
+    [disabled]="page == max_pages"
+    id="increase-button"
+    (click)="setPage.emit(page + 1)"
+    class="h-8"
+  >
+    <i class="text-[2rem] text-nina_primary_color material-icons-round"
+      >arrow_forward_ios</i
+    >
+  </button>
+</div>

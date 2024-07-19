@@ -1,0 +1,11 @@
+:host {
+  .pagination-sequence {
+    @apply rounded bg-nina_primary_extra_light_color p-1 flex text-center items-center gap-1;
+    span {
+      @apply cursor-pointer px-3 font-bold;
+      &:hover {
+        @apply bg-nina_primary_light_color;
+      }
+    }
+  }
+}
