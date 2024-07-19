@@ -43,11 +43,10 @@ export class PaginationComponent implements OnInit, OnChanges {
       } else {
         pagination_array.push(`${page}`, `${page + 1}`, `${page + 2}`);
       }
-
-      pagination_array.push('...');
     } else if (page < max_pages - 2 && page > 4) {
-      pagination_array.push(`${page - 2}`, `${page - 1}`, `${page}`, '...');
+      pagination_array.push(`${page - 2}`, `${page - 1}`, `${page}`);
     }
+    if (page < max_pages - 4) pagination_array.push('...');
     pagination_array.push(
       `${max_pages - 2}`,
       `${max_pages - 1}`,
