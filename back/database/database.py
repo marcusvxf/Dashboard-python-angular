@@ -86,14 +86,14 @@ class Database:
     def _filter_complaints(self,filter_data:ComplaintFilter,el:ComplaintSchema):
         filter_data = copy.copy(filter_data)
 
-        if filter_data['from_date'] and filter_data["to_date"] and "date" in el:
+        if 'from_date' in filter_data and filter_data['from_date'] and 'to_date' in filter_data and filter_data["to_date"] and "date" in el:
             date = datetime.strptime(el["date"],"%Y-%m-%dT%H:%M:%S")
             if date < filter_data['from_date'] or date > filter_data["to_date"]:
                 return False                
             del filter_data['from_date']
             del filter_data["to_date"]
 
-        if filter_data['query_string']:
+        if 'query_string' in filter_data and filter_data["query_string"]:
             if filter_data['query_string'] not in el["description"] and filter_data['query_string']:
                 return False
             del filter_data["query_string"]
@@ -130,7 +130,7 @@ class Database:
         complaints_return = {};
         complaints_return['size'] = size
         complaints_return['complaints'] = complaints_with_user_data
-        complaints_return['max_pages'] = size/limit
+        complaints_return['max_pages'] = abs(size/limit if limit else 0)
   
         
         return complaints_return

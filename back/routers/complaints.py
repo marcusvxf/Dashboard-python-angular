@@ -12,7 +12,7 @@ def get_complaints(from_date: datetime = None,to_date:datetime=None,query_string
     offset = (page-1)*limit + 1
     complaints = client.get_complaints({'from_date':from_date,'to_date':to_date,"query_string":query_string},limit,offset)
     # complaints.sort(key=lambda x: x['id'])
-    return {'complaints':complaints['complaints'],'size':complaints['size'],'total_pages':complaints['max_pages']}
+    return {'complaints':complaints['complaints'],'size':complaints['size'],'max_pages':complaints['max_pages']}
 
 
 @router.get('/{complaint_id}', response_model=ComplaintSchema)
@@ -30,7 +30,7 @@ def get_complaints(user_id:str,limit:int = None,page:int = 1):
 
     complaints = client.get_complaints({'user_id':user_id},limit, offset)
     # complaints.sort(key=lambda x: x['id'])
-    return complaints
+    return {'complaints':complaints['complaints'],'size':complaints['size'],'max_pages':complaints['max_pages']}
 
 
 @router.get('/group/types', response_model=GroupByTypes)
