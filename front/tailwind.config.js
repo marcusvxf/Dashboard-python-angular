@@ -5,6 +5,7 @@ module.exports = {
     screens: {
       sm: '640px',
       md: '768px',
+      mdlg: '992px',
       lg: '1024px',
       xl: '1280px',
       '2xl': '1536px',
@@ -27,6 +28,7 @@ module.exports = {
       gray_2: '#B6B5BB',
       light_gray_3: '#E9E8EB',
       gray_4: '#F8F8F8',
+      light_gray_5: '#706F71',
     },
     extend: {},
   },

@@ -1,0 +1,12 @@
+:host {
+  .table-row {
+    @apply rounded-2xl flex flex-nowrap flex-row w-[50rem] mdlg:w-full pr-[10%] mb-2 py-[1.375rem] px-6;
+
+    &-col {
+      @apply text-light_gray_5 flex text-nowrap overflow-x-hidden;
+      span {
+        @apply w-[80%] overflow-x-hidden text-ellipsis;
+      }
+    }
+  }
+}
