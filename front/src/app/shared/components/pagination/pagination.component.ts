@@ -27,10 +27,11 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   mount_array(page: number, max_pages: number): string[] {
     let pagination_array: string[] = [];
+
     if (max_pages < 7) {
       pagination_array = Array.from(
         { length: this.max_pages },
-        (value, index) => `${index}`
+        (value, index) => `${index + 1}`
       );
       return pagination_array;
     }
