@@ -41,7 +41,7 @@ export class ComplaintDetailsComponent implements OnInit {
   }
 
   get_age(date: string): number {
-    date = moment(date).format('MM/DD/YYYY');
+    let first_date = moment(date, 'MM/DD/YYYY');
     let actual_date = moment();
     return actual_date.diff(date, 'years');
   }

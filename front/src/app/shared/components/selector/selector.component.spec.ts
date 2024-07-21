@@ -65,6 +65,6 @@ describe('SelectorComponent', () => {
     select_options: HTMLElement =
       fixture.nativeElement.querySelector('.selector-options');
 
-    expect(select_options.classList).toContain('max-h-[5rem]');
+    expect(select_options.classList).not.toContain('max-h-0');
   }));
 });

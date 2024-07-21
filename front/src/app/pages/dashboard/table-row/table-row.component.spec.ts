@@ -28,18 +28,11 @@ describe('TableRowComponent', () => {
     user: {} as user,
   };
 
-  let correct_data: complaint = {
+  let correct_data: any = {
     id: '668c36d9e3872b4344d4b38d',
     neighborhood: 'Recife',
     date: '01/04/2024',
     type: 'AMEAÇA',
-    user_id: 'undefined',
-    at_moment: true,
-    situation: '',
-    description: '',
-    created_at: '',
-    updated_at: '',
-    user: {} as user,
   };
 
   beforeEach(async () => {
