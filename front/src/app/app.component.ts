@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PageHeaderComponent } from './shared/components/page-header/page-header.component';
-
+import { register } from 'swiper/element/bundle';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,4 +16,8 @@ import { PageHeaderComponent } from './shared/components/page-header/page-header
   ],
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    register();
+  }
+}

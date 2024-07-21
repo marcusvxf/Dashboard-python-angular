@@ -1,6 +1,13 @@
 :host {
   [dashboard-container] {
-    @apply flex flex-col gap-6 md:gap-12  md:pt-16 px-4 md:px-[9.875rem];
+    @apply flex flex-col items-center;
+  }
+
+  .swiper {
+    @apply bg-nina_primary_color min-w-[22rem] md:min-w-[44rem] md:h-[23rem] lgxl:min-w-[22rem] max-w-[80vw] p-[1rem] rounded-2xl;
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-bullet-size: 16px;
+    --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.8);
   }
   .table {
     @apply flex flex-col overflow-x-auto;

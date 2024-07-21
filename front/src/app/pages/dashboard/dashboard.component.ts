@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  ElementRef,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { TableRowComponent } from './table-row/table-row.component';
 import {
   IFilter,
@@ -16,30 +22,42 @@ import {
   HttpHandler,
 } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { GenreChartComponent } from './genre-chart/genre-chart.component';
+import { AgressionTypeComponent } from './agression-type/agression-type.component';
+import { AgeGroupComponent } from './age-group/age-group.component';
+import { ComplaintMomentChartComponent } from './complaint-moment-chart/complaint-moment-chart.component';
+import { CasesPerMonthChartComponent } from './cases-per-month-chart/cases-per-month-chart.component';
+import { NeighborhoodRankingChartComponent } from './neighborhood-ranking-chart/neighborhood-ranking-chart.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [TableRowComponent, PaginationComponent, HttpClientModule],
+  imports: [
+    TableRowComponent,
+    PaginationComponent,
+    HttpClientModule,
+    GenreChartComponent,
+    AgressionTypeComponent,
+    AgeGroupComponent,
+    ComplaintMomentChartComponent,
+    CasesPerMonthChartComponent,
+    NeighborhoodRankingChartComponent,
+  ],
   providers: [ComplaintService, HttpClient],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  mocked_data: IRowContent = {
-    id: '668c36d9e3872b4344d4b38d',
-    neighborhood: 'Recife',
-    date: '2024-04-01T02:45:16',
-    aggression_type: 'THREATENING',
-  };
+  @ViewChild('search_input', { static: true }) searched_string!: ElementRef;
+  @ViewChild('slider', { read: true }) slides: any;
   constructor(
     public dialog: MatDialog,
-    public Complaint_service: ComplaintService
+    public Complaint_service: ComplaintService,
+    private rend: Renderer2
   ) {
     this.get_complaints();
   }
-
-  @ViewChild('search_input', { static: true }) searched_string!: ElementRef;
 
   get_complaints() {
     let trated_filter: any = {};
@@ -54,7 +72,6 @@ export class DashboardComponent {
     ).subscribe((el) => {
       this.complaints_data = el.complaints;
       this.max_pages = el.max_pages;
-      console.log(this.max_pages);
     });
   }
 
@@ -62,6 +79,8 @@ export class DashboardComponent {
   filter_data: IFilter = {
     query_string: '',
   };
+
+  el: HTMLDivElement | undefined | null;
 
   page = 1;
   max_pages = 10;

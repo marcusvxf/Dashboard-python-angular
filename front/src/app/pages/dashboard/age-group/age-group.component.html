@@ -1,0 +1,27 @@
+<div id="chart" class="p-4 md:p-8 bg-gray_4 rounded-2xl h-[23rem]">
+  <h4 class="mb-[1rem]">Gênero</h4>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [yaxis]="chartOptions.yaxis"
+    [legend]="chartOptions.legend"
+    [fill]="chartOptions.fill"
+    [stroke]="chartOptions.stroke"
+    [tooltip]="chartOptions.tooltip"
+    [xaxis]="chartOptions.xaxis"
+  ></apx-chart>
+
+  <div class="w-full items-center justify-center flex gap-4">
+    <div class="flex gap-1 items-center">
+      <div class="w-4 h-4 bg-nina_primary_color rounded-md"></div>
+      <label class="legend2">Idade confirmada</label>
+    </div>
+
+    <div class="flex gap-1 items-center">
+      <div class="w-4 h-4 bg-nina_primary__medium_color rounded-md"></div>
+      <label class="legend2">Idade estimada </label>
+    </div>
+  </div>
+</div>
