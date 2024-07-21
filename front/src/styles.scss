@@ -143,6 +143,10 @@ $front-theme: mat.define-theme(
     @extend .button;
   }
 
+  .input_default {
+    @apply border-2 border-nina_primary_color rounded-md px-4 py-3 w-full md:w-[50vw] outline-none;
+  }
+
   .link {
     @apply text-base font-medium;
     &:hover {

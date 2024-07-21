@@ -8,12 +8,12 @@ import { IDictOptions } from '../interfaces/components';
 export class TranslatePipe implements PipeTransform {
   transform(value: string | undefined, ...args: unknown[]): string {
     let translate_dict: IDictOptions = {
-      THREATENING: 'AMEAÇA',
+      THREATENING: 'INTIMIDAÇÂO',
       GROPING: 'APALPAR',
       STALKING: 'PERSEGUIÇÂO',
-      UNWANTED_COMMENTS: 'COMENTÁRIOS INDESEJADOS',
+      UNWANTED_COMMENTS: 'COMENTÁRIOS NÂO AUTORIZADOS',
       FLASHING: 'PISCADA',
-      UNWANTED_PHOTOS: 'FOTOS INDESEJADAS',
+      UNWANTED_PHOTOS: 'FOTOS NÂO AUTORIZADAS',
       OTHER: 'outro',
       CIS_MALE: 'Homem Cis',
       CIS_FEMALE: 'Mulher CIs',

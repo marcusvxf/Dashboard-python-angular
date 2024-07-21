@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 import copy
 import os
-from ..schemas.complaints import ComplaintSchema,ComplaintFilter
+from ..schemas.complaints import ComplaintSchema,ComplaintFilter,ComplaintList
 import math
 
 __location__ = os.path.realpath(
@@ -104,6 +104,18 @@ class Database:
                 return False
         return True
     
+    def format_complains(self,complains:ComplaintList):
+        users = { user['id']: user for user in self.users }
+        complaints_with_user_data = []
+        for complaint in complains:
+            user_id = complaint['user_id']
+            user = users[user_id]
+
+            for key, value in user.items():
+                complaint[f'user_{key}'] = value
+
+            complaints_with_user_data.append(complaint)
+        return complaints_with_user_data
 
     def get_complaints(self,filter_data:ComplaintFilter = None,limit: int = None ,offset: int = None):
         complaints_with_user_data = []
@@ -150,7 +162,7 @@ class Database:
     def group_by(self, complaint_key: str):
         """ Groups the number of complaints by each value of given key. """
         grouped_data = {}
-        complaints = self.get_complaints()
+        complaints = self.format_complains(self.complaints)
         for complaint in complaints:
             value = complaint[complaint_key]
             self._increment_count(grouped_data, value)
@@ -160,7 +172,7 @@ class Database:
     def group_by_month(self):
         """ Groups the number of complaints by each month. """
         grouped_data = {}
-        complaints = self.get_complaints()
+        complaints = self.format_complains(self.complaints)
         for complaint in complaints:
             date = datetime.strptime(complaint['date'], DATE_FORMAT)
             _, month, _ = self._get_date_elements(date)
@@ -172,7 +184,7 @@ class Database:
     def group_by_age_group(self):
         """ Groups the number of complaints by age groups. """
         grouped_data = {}
-        complaints = self.get_complaints()
+        complaints = self.format_complains(self.complaints)
         for complaint in complaints:
             user_birthdate = datetime.strptime(complaint['user_birthdate'], DATE_FORMAT)  
             age_group = self._get_age_group(user_birthdate) 

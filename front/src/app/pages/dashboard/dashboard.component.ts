@@ -22,7 +22,7 @@ import {
   HttpHandler,
 } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { GenreChartComponent } from './genre-chart/genre-chart.component';
+import { GenderChartComponent } from './genders-chart/gender-chart.component';
 import { AgressionTypeComponent } from './agression-type/agression-type.component';
 import { AgeGroupComponent } from './age-group/age-group.component';
 import { ComplaintMomentChartComponent } from './complaint-moment-chart/complaint-moment-chart.component';
@@ -36,7 +36,7 @@ import { NeighborhoodRankingChartComponent } from './neighborhood-ranking-chart/
     TableRowComponent,
     PaginationComponent,
     HttpClientModule,
-    GenreChartComponent,
+    GenderChartComponent,
     AgressionTypeComponent,
     AgeGroupComponent,
     ComplaintMomentChartComponent,

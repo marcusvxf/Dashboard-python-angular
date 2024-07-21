@@ -1,6 +1,6 @@
 :host {
   [dashboard-container] {
-    @apply flex flex-col items-center;
+    @apply flex flex-col md:items-center;
   }
 
   .swiper {
@@ -9,8 +9,12 @@
     --swiper-pagination-bullet-size: 16px;
     --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.8);
   }
+  .charts {
+    @apply w-[48%] min-w-[22rem] md:min-w-[44rem] lgxl:min-w-[22rem];
+  }
+
   .table {
-    @apply flex flex-col overflow-x-auto;
+    @apply w-full flex flex-col overflow-x-auto;
     &-header {
       @apply px-6 flex flex-nowrap flex-row w-[50rem] mdlg:w-full pr-[10%] mb-2;
 
