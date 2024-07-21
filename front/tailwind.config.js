@@ -8,6 +8,7 @@ module.exports = {
       mdlg: '992px',
       lg: '1024px',
       xl: '1280px',
+      '1.5xl': '1455px',
       '2xl': '1536px',
     },
     fontFamily: {
@@ -18,6 +19,7 @@ module.exports = {
       nina_primary__medium_color: '#9886f2',
       nina_primary_light_color: '#c9beff',
       nina_primary_extra_light_color: '#f1ecff',
+      nina_secondary_extra_light_color: '#F3EEFF',
       nina_primary_dark_color: '#5946bd',
       black_1: '#050505',
       black_2: '#313131',
