@@ -5,7 +5,7 @@
     &-col {
       @apply text-light_gray_5 flex text-nowrap overflow-x-hidden;
       span {
-        @apply w-[80%] overflow-x-hidden text-ellipsis;
+        @apply w-[80%] px-2 overflow-x-hidden text-ellipsis;
       }
     }
   }

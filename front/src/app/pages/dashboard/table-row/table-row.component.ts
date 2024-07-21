@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IRowContent } from '../../../shared/interfaces/complaint';
+import { IRowContent, complaint } from '../../../shared/interfaces/complaint';
 import { CommonModule } from '@angular/common';
 import { AgressionTypeTranslatePipe } from '../../../shared/pipes/agression-type-translate.pipe';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './table-row.component.scss',
 })
 export class TableRowComponent {
-  @Input() complaint_data: IRowContent | undefined;
+  @Input() complaint_data: complaint | undefined;
 
   @Input() index: number = 0;
 
