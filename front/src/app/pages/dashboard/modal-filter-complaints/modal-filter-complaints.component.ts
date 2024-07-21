@@ -54,6 +54,13 @@ export class ModalFilterComplaintsComponent implements OnChanges {
       ...this.complaint_filter_attributes,
       ...data.filter_data,
     };
+    if (
+      this.complaint_filter_attributes.from_date &&
+      this.complaint_filter_attributes.to_date
+    ) {
+      this.start_date = new Date(this.complaint_filter_attributes.from_date);
+      this.end_date = new Date(this.complaint_filter_attributes.to_date);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
