@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenderChartComponent } from './gender-chart.component';
+import { GroupService } from '../../../core/services/group.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('GenreChartComponent', () => {
   let component: GenderChartComponent;
@@ -9,6 +11,7 @@ describe('GenreChartComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [GenderChartComponent],
+      providers: [GroupService, HttpClient],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GenderChartComponent);

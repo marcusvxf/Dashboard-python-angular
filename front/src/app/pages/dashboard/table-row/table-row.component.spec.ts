@@ -9,6 +9,7 @@ import { TableRowComponent } from './table-row.component';
 import { IRowContent, complaint } from '../../../shared/interfaces/complaint';
 import { Router, NavigationExtras } from '@angular/router';
 import { user } from '../../../shared/interfaces/user';
+import { translate_table } from '../../../core/utils/utilitaries';
 
 describe('TableRowComponent', () => {
   let component: TableRowComponent;
@@ -32,7 +33,7 @@ describe('TableRowComponent', () => {
     id: '668c36d9e3872b4344d4b38d',
     neighborhood: 'Recife',
     date: '01/04/2024',
-    type: 'AMEAÇA',
+    type: translate_table['THREATENING'],
   };
 
   beforeEach(async () => {

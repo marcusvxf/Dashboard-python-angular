@@ -7,7 +7,7 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import { GroupService } from '../../../core/services/group.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -18,7 +18,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-complaint-moment-chart',
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, HttpClientModule],
   providers: [GroupService, HttpClient],
   templateUrl: './complaint-moment-chart.component.html',
   styleUrl: './complaint-moment-chart.component.scss',
@@ -34,7 +34,6 @@ export class ComplaintMomentChartComponent {
 
   get_moment_data() {
     this.group_service.get_at_moment_data().subscribe((el) => {
-      console.log(((el.True / (el.True + el.False)) * 100).toFixed(1));
       this.chartOptions_at_moment = {
         series: [((el.True / (el.True + el.False)) * 100).toFixed(1)],
         chart: {

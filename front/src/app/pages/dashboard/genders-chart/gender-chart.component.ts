@@ -20,7 +20,6 @@ import {
 } from 'ng-apexcharts';
 import { GroupService } from '../../../core/services/group.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { error } from 'console';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -40,8 +39,8 @@ export type ChartOptions = {
   standalone: true,
   providers: [GroupService, HttpClient],
   imports: [
-    HttpClientModule,
     FormsModule,
+    HttpClientModule,
     CommonModule,
     NgApexchartsModule,
     FormsModule,
@@ -110,7 +109,6 @@ export class GenderChartComponent {
             },
           },
         };
-        console.log(this.chartOptions);
         this.isLoading = false;
       },
       (err) => {

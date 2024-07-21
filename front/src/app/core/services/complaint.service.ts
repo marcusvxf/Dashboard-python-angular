@@ -7,13 +7,14 @@ import {
   complaint_return,
   IFilter,
 } from '../../shared/interfaces/complaint';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class ComplaintService {
   constructor(private http: HttpClient) {}
 
-  private base_url = 'http://127.0.0.1:8000/complaints';
+  private base_url = environment.api_url + 'complaints';
 
   public get_all_complaints(
     limit: number = 10,

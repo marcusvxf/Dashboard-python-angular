@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import {
   ApexAxisChartSeries,
@@ -21,7 +21,7 @@ import { sort_desc } from '../../../core/utils/utilitaries';
 @Component({
   selector: 'app-agression-type',
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, HttpClientModule],
   providers: [HttpClient, GroupService],
   templateUrl: './agression-type.component.html',
   styleUrl: './agression-type.component.scss',

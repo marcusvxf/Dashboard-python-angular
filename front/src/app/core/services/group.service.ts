@@ -10,6 +10,7 @@ import {
   IGroupTypeReturn,
   INeighborhood,
 } from '../../shared/interfaces/group';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ import {
 export class GroupService {
   constructor(public http: HttpClient) {}
 
-  private base_url = 'http://127.0.0.1:8000/complaints/group/';
+  private base_url = environment.api_url + 'complaints/group/';
 
   public get_types_data(): Observable<IGroupTypeReturn> {
     const formated_url = this.base_url + 'types';

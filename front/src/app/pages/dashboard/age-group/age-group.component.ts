@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 
 import {
@@ -34,7 +34,7 @@ export type ChartOptions = {
   selector: 'app-age-group',
   standalone: true,
   providers: [GroupService, HttpClient],
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, HttpClientModule],
   templateUrl: './age-group.component.html',
   styleUrl: './age-group.component.scss',
 })

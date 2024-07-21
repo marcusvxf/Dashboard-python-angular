@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { GroupService } from '../../../core/services/group.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { sort_desc } from '../../../core/utils/utilitaries';
 
 @Component({
   selector: 'app-neighborhood-ranking-chart',
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, HttpClientModule],
   providers: [GroupService, HttpClient],
   templateUrl: './neighborhood-ranking-chart.component.html',
   styleUrl: './neighborhood-ranking-chart.component.scss',

@@ -4,20 +4,22 @@
     <div class="mt-4 mr-[-1rem] legend2 text-white_default">
       <span>Casos</span>
     </div>
-    <div id="chart" class="w-full">
-      <apx-chart
-        [series]="chartOptions.series"
-        [chart]="chartOptions.chart"
-        [dataLabels]="chartOptions.dataLabels"
-        [plotOptions]="chartOptions.plotOptions"
-        [yaxis]="chartOptions.yaxis"
-        [xaxis]="chartOptions.xaxis"
-        [fill]="chartOptions.fill"
-        [title]="chartOptions.title"
-        [colors]="chartOptions.colors"
-        [legend]="{ show: false }"
-        [grid]="chartOptions.grid"
-      ></apx-chart>
-    </div>
+    @if (!isLoading) {
+      <div id="chart" class="w-full">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [dataLabels]="chartOptions.dataLabels"
+          [plotOptions]="chartOptions.plotOptions"
+          [yaxis]="chartOptions.yaxis"
+          [xaxis]="chartOptions.xaxis"
+          [fill]="chartOptions.fill"
+          [title]="chartOptions.title"
+          [colors]="chartOptions.colors"
+          [legend]="{ show: false }"
+          [grid]="chartOptions.grid"
+        ></apx-chart>
+      </div>
+    }
   </div>
 </div>

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgeGroupComponent } from './age-group.component';
+import { GroupService } from '../../../core/services/group.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('AgeGroupComponent', () => {
   let component: AgeGroupComponent;
@@ -8,9 +10,9 @@ describe('AgeGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AgeGroupComponent]
-    })
-    .compileComponents();
+      imports: [AgeGroupComponent],
+      providers: [GroupService, HttpClient],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AgeGroupComponent);
     component = fixture.componentInstance;

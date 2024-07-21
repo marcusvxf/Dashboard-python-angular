@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { GroupService } from '../../../core/services/group.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-cases-per-month-chart',
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, HttpClientModule],
   providers: [GroupService, HttpClient],
   templateUrl: './cases-per-month-chart.component.html',
   styleUrl: './cases-per-month-chart.component.scss',
