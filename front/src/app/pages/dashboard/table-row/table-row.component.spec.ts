@@ -6,25 +6,40 @@ import {
 } from '@angular/core/testing';
 
 import { TableRowComponent } from './table-row.component';
-import { IRowContent } from '../../../shared/interfaces/complaint';
+import { IRowContent, complaint } from '../../../shared/interfaces/complaint';
 import { Router, NavigationExtras } from '@angular/router';
+import { user } from '../../../shared/interfaces/user';
 
 describe('TableRowComponent', () => {
   let component: TableRowComponent;
   let fixture: ComponentFixture<TableRowComponent>;
 
-  let mocked_data: IRowContent = {
+  let mocked_data: complaint = {
     id: '668c36d9e3872b4344d4b38d',
     neighborhood: 'Recife',
     date: '2024-04-01T02:45:16',
-    aggression_type: 'THREATENING',
+    type: 'THREATENING',
+    user_id: 'undefined',
+    at_moment: true,
+    situation: '',
+    description: '',
+    created_at: '',
+    updated_at: '',
+    user: {} as user,
   };
 
-  let correct_data: IRowContent = {
+  let correct_data: complaint = {
     id: '668c36d9e3872b4344d4b38d',
     neighborhood: 'Recife',
     date: '01/04/2024',
-    aggression_type: 'AMEAÇA',
+    type: 'AMEAÇA',
+    user_id: 'undefined',
+    at_moment: true,
+    situation: '',
+    description: '',
+    created_at: '',
+    updated_at: '',
+    user: {} as user,
   };
 
   beforeEach(async () => {
