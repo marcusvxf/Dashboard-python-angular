@@ -64,14 +64,11 @@ describe('PaginationComponent', () => {
   it('should build pagination numbers correct', () => {
     expect(component.mount_array(7, 10)).toEqual([
       '1',
-      '2',
-      '3',
       '...',
-      '5',
       '6',
       '7',
       '8',
-      '9',
+      '...',
       '10',
     ]);
     expect(component.mount_array(2, 10)).toEqual([

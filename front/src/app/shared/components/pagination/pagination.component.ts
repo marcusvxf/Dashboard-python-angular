@@ -34,24 +34,30 @@ export class PaginationComponent implements OnInit, OnChanges {
       );
       return pagination_array;
     }
-    if (page > 4) {
+    if (page > 4 && page < max_pages) {
+      pagination_array.push('1', '...');
+    } else if (page == max_pages) {
       pagination_array.push('1', '2', '3', '...');
     }
-    if (page < max_pages - 3) {
+    if (page < max_pages - 1) {
       if (page - 1 > 0) {
         pagination_array.push(`${page - 1}`, `${page}`, `${page + 1}`);
       } else {
         pagination_array.push(`${page}`, `${page + 1}`, `${page + 2}`);
       }
-    } else if (page < max_pages - 2 && page > 4) {
+    } else if (page < max_pages && page > 4) {
       pagination_array.push(`${page - 2}`, `${page - 1}`, `${page}`);
     }
-    if (page < max_pages - 4) pagination_array.push('...');
-    pagination_array.push(
-      `${max_pages - 2}`,
-      `${max_pages - 1}`,
-      `${max_pages}`
-    );
+    if (page < max_pages - 2) pagination_array.push('...');
+    if (page <= 4 || page === max_pages) {
+      pagination_array.push(
+        `${max_pages - 2}`,
+        `${max_pages - 1}`,
+        `${max_pages}`
+      );
+    } else {
+      pagination_array.push(`${max_pages}`);
+    }
 
     return pagination_array;
   }
