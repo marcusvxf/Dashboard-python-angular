@@ -8,9 +8,9 @@ from datetime import datetime
 router = APIRouter(prefix='/complaints', tags=['complaints'])
 
 @router.get('/', response_model=CompalintListReturn)
-def get_complaints(from_date: datetime = None,to_date:datetime=None,query_string:str=None,limit:int = 10,page:int = 1):
+def get_complaints(from_date: datetime = None,type:str = None,to_date:datetime=None,query_string:str=None,limit:int = 10,page:int = 1):
     offset = (page-1)*limit + 1
-    complaints = client.get_complaints({'from_date':from_date,'to_date':to_date,"query_string":query_string},limit,offset)
+    complaints = client.get_complaints({'type':type,'from_date':from_date,'to_date':to_date,"query_string":query_string},limit,offset)
     # complaints.sort(key=lambda x: x['id'])
     return {'complaints':complaints['complaints'],'size':complaints['size'],'max_pages':complaints['max_pages']}
 

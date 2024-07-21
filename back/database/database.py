@@ -4,6 +4,7 @@ import json
 import copy
 import os
 from ..schemas.complaints import ComplaintSchema,ComplaintFilter
+import math
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -115,9 +116,9 @@ class Database:
             complaints_data = list(filter(lambda seq: self._filter_complaints(filter_data,seq),complaints_data))
 
         size = len(complaints_data)  
-        print(size)      
         if(limit and offset):
-            complaints_data = self.complaints[offset:(offset+limit)]
+            complaints_data = complaints_data[offset:(offset+limit)]
+        
 
         for complaint in complaints_data:
             user_id = complaint['user_id']
@@ -127,10 +128,10 @@ class Database:
                 complaint[f'user_{key}'] = value
 
             complaints_with_user_data.append(complaint)
-        complaints_return = {};
+        complaints_return = {}
         complaints_return['size'] = size
         complaints_return['complaints'] = complaints_with_user_data
-        complaints_return['max_pages'] = abs(size/limit if limit else 0)
+        complaints_return['max_pages'] = int(math.ceil(size/limit if limit else 1))
   
         
         return complaints_return

@@ -42,10 +42,15 @@ export class DashboardComponent {
   @ViewChild('search_input', { static: true }) searched_string!: ElementRef;
 
   get_complaints() {
+    let trated_filter: any = {};
+
+    for (let [key, value] of Object.entries(this.filter_data)) {
+      if (value != undefined && value != '') trated_filter[key] = value;
+    }
     this.Complaint_service.get_all_complaints(
       10,
       this.page,
-      this.filter_data
+      trated_filter
     ).subscribe((el) => {
       this.complaints_data = el.complaints;
       this.max_pages = el.max_pages;
@@ -69,7 +74,7 @@ export class DashboardComponent {
   openModal(): void {
     this.dialog_ref = this.dialog.open(ModalFilterComplaintsComponent, {
       width: '90vw',
-      height: '55vh',
+      height: '45vh',
       data: {
         filter_data: this.filter_data,
         set_filter: (data: IFilter) => {

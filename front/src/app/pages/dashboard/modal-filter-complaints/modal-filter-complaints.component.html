@@ -1,0 +1,60 @@
+<div class="p-[2rem] flex flex-col justify-between h-full">
+  <div class="flex flex-col gap-8">
+    <header class="flex justify-between pr-8">
+      <span
+        (click)="dialogRef.close()"
+        class="material-icons-round float-left cursor-pointer"
+      >
+        close
+      </span>
+      <h4 class="">Filtros</h4>
+      <div></div>
+    </header>
+    <div class="flex flex-col gap-1 z-20">
+      <div class="body1">Selecione o tipo da queixa</div>
+      <app-selector
+        [options]="type_options"
+        [defaultOption]="
+          complaint_filter_attributes
+            ? complaint_filter_attributes.type
+            : undefined
+        "
+        (onSelectOption)="set_filter_value('type', $event)"
+      />
+    </div>
+
+    <div>
+      <div class="body1">Busque por um intervalo de tempo</div>
+      <mat-form-field appearance="outline">
+        <mat-date-range-input #mat_input [rangePicker]="picker">
+          <input
+            [(ngModel)]="start_date"
+            matStartDate
+            placeholder="Start date"
+          />
+          <input [(ngModel)]="end_date" matEndDate placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <span
+            matDatepickerToggleIcon
+            (click)="dialogRef.close()"
+            class="material-icons-round text-nina_primary__medium_color cursor-pointer"
+          >
+            calendar_today
+          </span>
+          ></mat-datepicker-toggle
+        >
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <footer class="w-full">
+    <div class="flex gap-4 float-right">
+      <button (click)="clean_filter()" class="link">Limpar</button>
+      <button (click)="confirm_filters()" class="button_primary">
+        Filtrar
+      </button>
+    </div>
+  </footer>
+</div>
