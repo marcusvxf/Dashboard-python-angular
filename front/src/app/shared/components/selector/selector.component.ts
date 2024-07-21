@@ -38,6 +38,14 @@ export class SelectorComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.options_entered = this.options;
+    if (this.defaultOption) {
+      this.selected_item = {
+        key: this.defaultOption,
+        value: this.options[this.defaultOption],
+      };
+      return;
+    }
+    this.selected_item = { key: 'unset', value: '' };
   }
 
   constructor(private eRef: ElementRef) {}
