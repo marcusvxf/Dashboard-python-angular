@@ -18,10 +18,11 @@ module.exports = {
       nina_primary__medium_color: '#9886f2',
       nina_primary_light_color: '#c9beff',
       nina_primary_extra_light_color: '#f1ecff',
+      nina_primary_dark_color: '#5946bd',
       black_1: '#050505',
       black_2: '#313131',
       black_3: '#515151',
-      black_3: '#F1ECFF',
+      black_4: '#F1ECFF',
       black: '#000000',
       white_default: '#FFFFFF',
       gray_1: '#89888E',
@@ -30,7 +31,11 @@ module.exports = {
       gray_4: '#F8F8F8',
       light_gray_5: '#706F71',
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        selector_card: '2px 2px 4px 0px rgba(0, 0, 0, 0.25)',
+      },
+    },
   },
   plugins: [],
 };
