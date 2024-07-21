@@ -1,0 +1,15 @@
+:host {
+  [dashboard-container] {
+    @apply flex flex-col gap-6 md:gap-12  md:pt-16 px-4 md:px-[9.875rem];
+  }
+  .table {
+    @apply flex flex-col overflow-x-auto;
+    &-header {
+      @apply px-6 flex flex-nowrap flex-row w-[50rem] mdlg:w-full pr-[10%] mb-2;
+
+      &-col {
+        @apply text-light_gray_5 flex text-nowrap;
+      }
+    }
+  }
+}

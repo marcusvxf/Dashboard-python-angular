@@ -1,0 +1,53 @@
+<div dashboard-container>
+  <h1 class="text-black_2">Dashboard</h1>
+  <div class="flex flex-wrap gap-2 gap-x-2"></div>
+  <div class="flex flex-col gap-3 sm:gap-6">
+    <h3 class="text-black_2">Ocorrências</h3>
+    <div class="flex gap-4">
+      <input
+        #search_input
+        (keydown.enter)="on_text_search()"
+        type="search"
+        class="border-2 border-nina_primary_color rounded-md px-4 py-3 w-full md:w-[50vw] outline-none"
+        placeholder="Busque por palavras chave"
+      />
+      <button
+        (click)="on_text_search()"
+        class="button_primary px-4 material-icons-round cursor-pointer"
+      >
+        search
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-3 sm:gap-6">
+      <!-- <h4 class="text-black_2">Filtros</h4> -->
+
+      <button class="button_primary" (click)="openModal()">Filtrar</button>
+
+      @if (complaints_data.length > 0) {
+        <div class="table">
+          <div class="table-header">
+            <div class="body2 table-header-col flex-1">Identificador</div>
+            <div class="body2 table-header-col flex-1">Bairro</div>
+            <div class="body2 table-header-col flex-[2]">Data do ocorrido</div>
+            <div class="body2 table-header-col flex-1">Tipo de agressão</div>
+          </div>
+          @for (item of complaints_data; track $index) {
+            <app-table-row [index]="$index" [complaint_data]="item" />
+          }
+        </div>
+      } @else {
+        <div class="w-full text-center pt-[3rem] md:pt-[15rem]">
+          <h3>Ops, não encontramos nada tente uma busca diferente!</h3>
+        </div>
+      }
+      @if (complaints_data.length > 0) {
+        <app-pagination
+          [page]="page"
+          [max_pages]="max_pages"
+          (setPage)="set_page($event)"
+        />
+      }
+    </div>
+  </div>
+</div>
