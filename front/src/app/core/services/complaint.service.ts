@@ -13,12 +13,27 @@ import {
 export class ComplaintService {
   constructor(private http: HttpClient) {}
 
+  private base_url = 'http://127.0.0.1:8000/complaints';
+
   public get_all_complaints(
     limit: number = 10,
     page: number = 1,
     query_params: IFilter
   ): Observable<complaint_return> {
-    const url = `http://127.0.0.1:8000/complaints?limit=${limit}&page=${page}`;
+    const url = this.base_url;
+    return this.http
+      .get<any>(url, {
+        params: { ...query_params, limit, page },
+      })
+      .pipe(
+        catchError((error) => {
+          throw error;
+        })
+      );
+  }
+
+  public get_complain(id: string): Observable<complaint> {
+    const url = this.base_url + `/${id}`;
     return this.http.get<any>(url).pipe(
       catchError((error) => {
         throw error;
