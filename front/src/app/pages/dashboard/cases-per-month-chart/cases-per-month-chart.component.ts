@@ -52,6 +52,12 @@ export class CasesPerMonthChartComponent {
           colors: ['transparent'], // takes an array which will be repeated on columns
           opacity: 0.5,
         },
+
+        yaxis: {
+          lines: {
+            show: false,
+          },
+        },
       },
       markers: {
         size: 5,
@@ -74,6 +80,7 @@ export class CasesPerMonthChartComponent {
           offsetY: 0,
         },
       },
+
       xaxis: {
         axisTicks: {
           show: false,

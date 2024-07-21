@@ -62,6 +62,13 @@ export class AgressionTypeComponent {
         width: 4,
         colors: ['#f8f8f8'],
       },
+      grid: {
+        yaxis: {
+          lines: {
+            show: false,
+          },
+        },
+      },
 
       xaxis: {
         axisTicks: {
@@ -76,10 +83,22 @@ export class AgressionTypeComponent {
           'Perseguição',
           'Outros',
         ],
+        axisBorder: {
+          show: true,
+          color: '#313131',
+          offsetX: 0,
+          offsetY: 0,
+        },
       },
       yaxis: {
         labels: {
           show: false,
+        },
+        axisBorder: {
+          show: false,
+          color: '#fff',
+          offsetX: 0,
+          offsetY: 0,
         },
       },
       title: {

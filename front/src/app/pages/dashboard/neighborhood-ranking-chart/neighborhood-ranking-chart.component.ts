@@ -22,7 +22,7 @@ export class NeighborhoodRankingChartComponent {
       ],
       chart: {
         height: 250,
-        width: 350,
+        width: 400,
         type: 'bar',
         toolbar: {
           show: false,
@@ -67,10 +67,13 @@ export class NeighborhoodRankingChartComponent {
 
       xaxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-
         axisBorder: {
-          show: false,
+          show: true,
+          color: '#fff',
+          offsetX: 0,
+          offsetY: 0,
         },
+
         axisTicks: {
           show: false,
         },
@@ -101,6 +104,13 @@ export class NeighborhoodRankingChartComponent {
           color: '#fff',
           offsetX: 0,
           offsetY: -2,
+        },
+      },
+      grid: {
+        yaxis: {
+          lines: {
+            show: false,
+          },
         },
       },
       title: {},
