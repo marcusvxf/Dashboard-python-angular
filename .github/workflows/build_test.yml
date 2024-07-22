@@ -44,7 +44,7 @@ jobs:
 
       - name: Save node_modules
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm --prefix front/ ci
+        run: npm  ci
 
   test:
     runs-on: ubuntu-latest
@@ -59,13 +59,14 @@ jobs:
         with:
           node-version: 18.20.4
           cache: 'npm'
+          cache-dependency-path: 'front/package-lock.json'
 
       - name: Restore node modules from cache
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
         with:
-          path: node_modules
+          path: front/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
