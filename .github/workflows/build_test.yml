@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: 18.20.4
           cache: 'npm'
+          cache-dependency-path: 'front/package-lock.json'
 
       - name: Cache node modules
         id: cache
@@ -39,11 +40,11 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: cd front && npm install --frozen-lockfile
 
       - name: Save node_modules
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm --prefix front/ ci
 
   test:
     runs-on: ubuntu-latest
@@ -56,7 +57,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.20.0
+          node-version: 18.20.4
           cache: 'npm'
 
       - name: Restore node modules from cache
@@ -70,4 +71,4 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Run tests
-        run: npm run test
+        run: npm --prefix front/ run test
