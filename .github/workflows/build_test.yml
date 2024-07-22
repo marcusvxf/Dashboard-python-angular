@@ -20,6 +20,7 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
+
         with:
           node-version: 18.20.4
           cache: 'npm'
@@ -36,7 +37,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm --prefix front/ install --frozen-lockfile
+        run: cd front/ && npm install --frozen-lockfile
 
       - name: Save node_modules
         if: steps.cache.outputs.cache-hit != 'true'
@@ -61,7 +62,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: node_modules
+          path: front/node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
