@@ -1,89 +1,126 @@
-# fullstack-test-nina
+# Desafio fullstack NINA
 
-Template repository for fullstack web developers at Super NINA.
+Olá, esse projeto é um desafio feito para o processo seletivo da NINA.
 
-# Challenge
+<!--ts-->
 
-**Remember to create a new repository with this one as the template. This can be achieved with the button "Use this template", at the top right corner of this repo's github page!**
+- [Meu processo ](#meu-processor)
+  - [Extras](#extras)
+- [Tecnologias](#tecnologias)
+- [Instalação](#instalacao)
+- [Como usar](#como-usar)
+  - [Pre Requisitos](#pre-requisitos)
+  - [Rodando o Back](#rodando-o-back)
+  - [Rodando o Front](#rodando-o-front)
+- [O que faria depois](#o-que-faria-depois)
+- [Conclusões Finais](#conclusões-finais)
+  <!--te-->
 
-**Don't clone or fork this repository, as this method could expose your submission to other candidates and allow your hard work to be copied.**
+## Meu Processo
 
-As part of the selection process, we would like you to:
+Eu iniciei o projeto pelo back-end finalizando os pedidos do desafio e ja desenvolvendo alguns pontos com a ideia de serem reutilizaveis e expansiveis como a questão dos filtros onde foi utilizado para depois filtrar as queixas por outros campos. Seguindo do back iniciei o front end utilizando duas metodologias a mobile first onde ajudou na responsividade final da aplicação, e o TDD onde ajudou a ter um codigo final melhor e já com testes, também decidi por utilizar junto ao SCSS o taiwind ,após finalização da base foi feitos pequenos ajustes e como citado a mais temos o componente de filtros adicionando o filtro pelo tipo da agressão e busca por texto nas queixas também foi adicionado um workflow simples para rodar os testes de maneira automatizada, além dos testes em si.
+A dificuldade que vi no projeto acho que foi na configuração do projeto assim como na maioria dos projetos que onde uma lib não vai funcionar do jeito adequado então é necessario um pouco de analise e entender o que está acontencendo além de alguns erros que estavam no projeto para serem resolvidos, mesmo essa parte sendo um pouco chatinha acredito que o projeto fluiu de maneira tranquila.
 
-1. [Backend] Implement a missing feature that returns all the complaints from a given user. This will measure your ability in developing new features in an on-going project. This won't be used in the frontend, the route just needs to exist.
-2. [Backend] Implement a filtering functionality to the get_complaints route (```/complaints```) allowing it to return only the complaints where the field ```date``` is in between the fields ```from_date``` and ```to_date```, passed through query parameters. This will be necessary for integration with the complaints table in the frontend and will measure your ability to develop and maintain FastAPI routes with parameters.
-3. [Backend] Refactor the get_complaint route (```/complaint/{complaint_id}```) so that the returned complaint includes information about the user who registered it. This will be necessary for frontend integration and will measure your ability to develop and maintain python functions and FastAPI routes.
+Para a arquitetura do projeto do back eu segui a base que ja tinham sido feita, já no front utlizei a seguinte logica para as principais pastas:
 
-4. [Frontend] Build a small Angular application based on the provided template (there may be some errors that we left on purpose and you should fix), following the [design](https://www.figma.com/design/oosvhfSMv6OsCDCW27NWQ0/Processo-seletivo---2024?node-id=0-1&t=qbuEQHZKt86TTp7j-1) provided by our designer. This will allow us to evaluate your understanding of Angular and measure how well you work with a designer on the team.
-5. [Frontend] The application should be able to make a REST API call to the provided backend endpoints and integrate the data with the UI. This will allow us to evaluate your understanding of HTTP requests, and working with external APIs.
-6. [Frontend] Implement routing for the 2 pages needed for the Angular Application.
+![Imagem das pastas](/front/src/assets/readme_imgs/imagem-pastas-front.png)
 
-**Helpful tip! After starting the backend server, be sure to check the API's documentation at `http://127.0.0.1:8000/docs`**
+No desenvolvimento utilizei o seguinte padrão de commits,que segue como base o padrão utilizado pelo angular, [Angular Docs](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines):
 
-Your submission will be tested using:
-
-- Python 3.11
-- Node 18.19
-- Angular CLI 18.1
-
-<!-- - Connect to a web socket and display real time notifications as pop-ups. This will allow us to evaluate your understandings of websockets and data streaming. -->
-
-Anything more than that such as useful documentation, automated tests or the creation of docker containers will be counted as bonus features and **will** highlight your submission. Remember to explicitly point how to run your additions if you introduced them!
-
-**Not being able to complete all the assignments does not mean failing the challenge! Try to do as much as possible and send us your submission before the deadline even if it's incomplete!**
-
-After the test, even if you aren't selected, the devs at Super NINA will do their best to give you honest feedback and guide you to future improvements.
-
-When you have completed the test, please submit to us (as a response to the email informing you were selected for the tech challenge):
-
-- A link to the code repository (e.g. GitHub, GitLab, etc.) where we can view your code.
-
-- A brief explanation of your decisions, any challenges you encountered, and how you overcame them (in regard to the challenge).
-
-We look forward to seeing your work!
-
-# Backend
-
-## Requirements
-
-- Python 3.11+
-
-## Installing dependencies
-
-From the root of the project, run:
-
-```sh
-pip install -r back/requirements.txt
+```bash
+    <tipo-do-commit>: <descrição-do-commit>
 ```
 
-## Running server
+Aqui está a lista dos tipos:
 
-From the root of the project, run:
+- FIX: resolução de bugs
 
-```sh
-fastapi dev back/app.py
+- FEAT: inicia a implementação de uma feature
+
+- CHORE: trabalho em progresso em uma feature
+
+- REFACTOR: refatoração - ajustes que não interferem na lógica
+
+- TEST: implementa testes
+
+- STYLE: mudanças de formatação no código
+
+- PERF: ajustes de performance
+
+- DOCS: inserção/alteração em documentação
+
+### Extras
+
+##### Segue a descrição dos extras:
+
+1. Sobre os testes eles foram escritos desde do inicio da aplicação e sempre tentando usar de base o TDD você pode verificar eles rodando
+
+```bash
+    cd front/
+    npm run test
 ```
 
-# Frontend
+2. Sobre os novos filtros podem ser acessas da dashboar a partir do botão de filtros e do input ,e são os seguintes:
+   ![imagem dos filtros](/front/src/assets/readme_imgs/imagem-extra-front.png)
+   ![imagem do modal de filtros](/front/src/assets/readme_imgs/imagem-extra-modal-filtro.png)
 
-## Requirements
+3. Já do workflow subi um arquivo que pode ser encontrado em "pasta-do-projeto"/github/workflows/build_test.yml , lá fiz um codigo para rodar os testes e pull request na develop e na main em pushs na main.
 
-- Node 18.19+
+## Tecnologias
 
-## Installing dependencies
+As principais tecnologias utilizadas foram:
 
-From the root of the project, run:
+- [Angular](https://angular.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Sass](https://sass-lang.com/)
+- [Jasmine](https://jasmine.github.io/)
+- [Karma](https://karma-runner.github.io/latest/index.html)
+- [Python](https://www.python.org/)
+- [Fast Api](https://fastapi.tiangolo.com/)
 
-```sh
-cd front
-npm install
+## Como Usar
+
+Para utilizar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Python](https://www.python.org/) e o [Node.js](https://nodejs.org/en/) em uma versão superior a 18.
+
+### Rodando o Back
+
+Para rodar o back é necessario instalar as dependencias com :
+
+```bash
+    pip install -r back/requirements.txt
 ```
 
-## Running frontend
+Após instaladas pode rodar com o seguinte comando:
 
-From the root of the project, run:
-
-```sh
-cd front
-npm start
+```bash
+    fastapi dev back/app.py
 ```
+
+#### Rodando o Front
+
+Para rodar o front é necessario instalar as dependencias de dentro da pasta do front, assim :
+
+```bash
+    cd front/
+    npm i
+```
+
+Após instaladas pode rodar com o seguinte comando:
+
+```bash
+    npm run serve
+```
+
+## O que Faria Depois
+
+Como proximos passos passos tem algumas coisas que acharia interessante ter implementado/continuado:
+
+- Mais testes unitarios;
+- Testes End to End utilizando cypress;
+- Hospedar a aplicação, minha ideia inicial era utilizar o nitlify junto a digital ocean.
+
+## Conclusões Finais
+
+Enfim, adorei ter participado do desafio achei muito interessante pois acredito que mostrou como e o que é a NINA e a missão da empresa também, pois mesmo lidando com dados mocados da pra ver a importancia de uma plataforma como a NINA. E pra mim foi muito interessante ter o desafio de fazer um projeto novo ali com o escopo já decidido.

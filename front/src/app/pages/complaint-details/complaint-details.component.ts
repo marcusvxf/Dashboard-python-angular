@@ -28,7 +28,6 @@ export class ComplaintDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.id);
     this.get_complaint_data();
   }
 
