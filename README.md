@@ -33,21 +33,21 @@ No desenvolvimento utilizei o seguinte padrão de commits,que segue como base o 
 
 Aqui está a lista dos tipos:
 
-- FIX: resolução de bugs
+- FIX: para resolução de bugs
 
-- FEAT: inicia a implementação de uma feature
+- FEAT: para iniciar a implementação de uma feature
 
-- CHORE: trabalho em progresso em uma feature
+- CHORE: para trabalho em progresso em uma feature
 
 - REFACTOR: refatoração - ajustes que não interferem na lógica
 
-- TEST: implementa testes
+- TEST: para implementar testes
 
 - STYLE: mudanças de formatação no código
 
 - PERF: ajustes de performance
 
-- DOCS: inserção/alteração em documentação
+- DOCS: para inserção/alteração em documentação
 
 ### Extras
 
@@ -60,7 +60,7 @@ Aqui está a lista dos tipos:
     npm run test
 ```
 
-2. Sobre os novos filtros podem ser acessas da dashboard a partir do botão de filtros e do input ,e são os seguintes:
+2. Sobre os novos filtros podem ser acessas da dashboard a partir do botão de filtros e do input já está na dashboard os filtros estão na pasta **/front/dashboard/modal-filter-complaints** ,e são os seguintes:
    ![imagem dos filtros](/front/src/assets/readme_imgs/imagem-extra-front.png)
    ![imagem do modal de filtros](/front/src/assets/readme_imgs/imagem-extra-modal-filtro.png)
 
