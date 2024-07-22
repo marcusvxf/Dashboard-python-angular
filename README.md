@@ -53,18 +53,20 @@ Aqui está a lista dos tipos:
 
 ##### Segue a descrição dos extras:
 
-1. Sobre os testes eles foram escritos desde do inicio da aplicação e sempre tentando usar de base o TDD você pode verificar eles rodando
+1. Sobre os testes eles foram escritos desde do inicio da aplicação e sempre tentando usar de base o TDD você pode verificar eles rodando:
 
 ```bash
     cd front/
     npm run test
 ```
 
-2. Sobre os novos filtros podem ser acessas da dashboar a partir do botão de filtros e do input ,e são os seguintes:
+2. Sobre os novos filtros podem ser acessas da dashboard a partir do botão de filtros e do input ,e são os seguintes:
    ![imagem dos filtros](/front/src/assets/readme_imgs/imagem-extra-front.png)
    ![imagem do modal de filtros](/front/src/assets/readme_imgs/imagem-extra-modal-filtro.png)
 
-3. Já do workflow subi um arquivo que pode ser encontrado em "pasta-do-projeto"/github/workflows/build_test.yml , lá fiz um codigo para rodar os testes e pull request na develop e na main em pushs na main.
+3. Já do workflow subi um arquivo que pode ser encontrado em "pasta-do-projeto"/github/workflows/build_test.yml , lá fiz um código para rodar os testes e pull request na develop e na main em pushs na main.
+
+4. Também fiz o uso do tailwind dentro do projeto ao lado do scss.
 
 ## Tecnologias
 
@@ -86,7 +88,7 @@ Para utilizar, você vai precisar ter instalado em sua máquina as seguintes fer
 
 ### Rodando o Back
 
-Para rodar o back é necessario instalar as dependencias com :
+Para rodar o back é necessário instalar as dependências com :
 
 ```bash
     pip install -r back/requirements.txt
@@ -100,7 +102,7 @@ Após instaladas pode rodar com o seguinte comando:
 
 #### Rodando o Front
 
-Para rodar o front é necessario instalar as dependencias de dentro da pasta do front, assim :
+Para rodar o front é necessário instalar as dependências de dentro da pasta do front, assim :
 
 ```bash
     cd front/
@@ -115,11 +117,11 @@ Após instaladas pode rodar com o seguinte comando:
 
 ## O que Faria Depois
 
-Como proximos passos passos tem algumas coisas que acharia interessante ter implementado/continuado:
+Como próximos passos passos tem algumas coisas que acharia interessante ter implementado/continuado:
 
-- Mais testes unitarios;
+- Mais testes unitários;
 - Testes End to End utilizando cypress;
-- Hospedar a aplicação, minha ideia inicial era utilizar o nitlify junto a digital ocean.
+- Hospedar a aplicação, minha ideia inicial era utilizar o netlify junto a digital ocean.
 
 ## Conclusões Finais
 
