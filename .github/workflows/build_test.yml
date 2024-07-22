@@ -2,7 +2,7 @@ name: Test the application
 
 on:
   push:
-    branches: [maind]
+    branches: [main]
 
   pull_request:
     branches: [develop, main]
