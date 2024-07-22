@@ -21,5 +21,5 @@ jobs:
           cache-dependency-path: 'front/package-lock.json'
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: npm install --frozen-lockfile
+      - run: cd front/ &&  npm install --frozen-lockfile
       - run: npm run test
