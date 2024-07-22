@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: cd front && npm install --frozen-lockfile
+        run: npm install --frozen-lockfile
 
       - name: Save node_modules
         if: steps.cache.outputs.cache-hit != 'true'
