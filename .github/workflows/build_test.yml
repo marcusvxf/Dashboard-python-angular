@@ -22,4 +22,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: cd front/ &&  npm install --frozen-lockfile
-      - run: npm run test
+      - run: npm --prefix front/ run test
